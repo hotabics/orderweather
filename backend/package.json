@@ -1,0 +1,27 @@
+{
+  "name": "orderweather-backend",
+  "version": "1.0.0",
+  "description": "Backend API for OrderWeather application",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "keywords": ["weather", "api", "payment"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.8.4",
+    "dotenv": "^16.3.1",
+    "cors": "^2.8.5",
+    "axios": "^1.12.0",
+    "stripe": "^13.10.0",
+    "node-cron": "^3.0.2",
+    "body-parser": "^1.20.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
