@@ -255,6 +255,8 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 - Implement rate limiting for production
 - Add authentication/authorization for user-specific operations
 
+**⚠️ Important:** This is an MVP implementation. See [SECURITY.md](SECURITY.md) for comprehensive security considerations and production requirements.
+
 ## 📞 Support
 
 For issues or questions, please open an issue on GitHub.

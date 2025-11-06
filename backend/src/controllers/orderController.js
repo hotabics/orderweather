@@ -99,6 +99,12 @@ exports.getUserOrders = async (req, res) => {
       return res.status(400).json({ error: 'Email is required' });
     }
 
+    // Validate email format to prevent injection
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({ error: 'Invalid email format' });
+    }
+
     const orders = await Order.find({ email }).sort({ createdAt: -1 });
     res.json(orders);
   } catch (error) {
