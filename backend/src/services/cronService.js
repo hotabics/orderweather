@@ -19,6 +19,8 @@ class CronService {
 
   /**
    * Check weather for orders and process payments
+   * Note: In production with multiple instances, consider using findOneAndUpdate
+   * with atomic operations or a distributed lock to prevent race conditions
    */
   async checkWeatherForOrders() {
     try {
@@ -79,7 +81,7 @@ class CronService {
         try {
           await paymentService.capturePayment(order.paymentIntentId);
           order.status = 'fulfilled';
-          order.paymentStatus = 'succeeded';
+          order.paymentStatus = 'captured';
           console.log(`Order ${order._id} fulfilled - payment captured`);
         } catch (error) {
           console.error(`Failed to capture payment for order ${order._id}:`, error);

@@ -45,10 +45,13 @@ class WeatherService {
 
       return {
         temperature: closestForecast.main.temp,
-        hasRain: closestForecast.weather.some(w => 
-          w.main.toLowerCase().includes('rain') || 
-          w.description.toLowerCase().includes('rain')
-        ),
+        hasRain: closestForecast.weather.some(w => {
+          const main = w.main.toLowerCase();
+          const desc = w.description.toLowerCase();
+          return main.includes('rain') || main.includes('drizzle') || 
+                 main.includes('thunderstorm') || desc.includes('rain') || 
+                 desc.includes('drizzle') || desc.includes('shower');
+        }),
         description: closestForecast.weather[0].description,
         timestamp: new Date(closestForecast.dt * 1000)
       };

@@ -17,7 +17,8 @@ exports.createOrder = async (req, res) => {
 
     // Validate date is in the future
     const orderDate = new Date(date);
-    if (orderDate <= new Date()) {
+    const now = new Date();
+    if (orderDate <= now) {
       return res.status(400).json({ 
         error: 'Order date must be in the future' 
       });

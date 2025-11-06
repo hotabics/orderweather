@@ -18,6 +18,19 @@ const OrderForm = ({ onOrderCreated }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  // Calculate min and max dates once
+  const minDate = React.useMemo(() => {
+    const date = new Date();
+    date.setDate(date.getDate() + 1);
+    return date;
+  }, []);
+
+  const maxDate = React.useMemo(() => {
+    const date = new Date();
+    date.setDate(date.getDate() + 5);
+    return date;
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -51,12 +64,6 @@ const OrderForm = ({ onOrderCreated }) => {
       setLoading(false);
     }
   };
-
-  // Calculate min and max dates (tomorrow to 5 days from now)
-  const minDate = new Date();
-  minDate.setDate(minDate.getDate() + 1);
-  const maxDate = new Date();
-  maxDate.setDate(maxDate.getDate() + 5);
 
   return (
     <div className="order-form">
